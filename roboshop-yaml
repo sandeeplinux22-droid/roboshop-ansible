@@ -2,7 +2,7 @@
   hosts: local
   connection: local 
   vars:
-    instances: ["mongodb"]
+    instances: [ "mongodb" ]
     action: create
     action: delete
     domain_name: sandeeplinux22.store
