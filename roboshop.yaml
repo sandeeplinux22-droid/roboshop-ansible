@@ -24,4 +24,4 @@
 
     - name: print ec2 creation output 
       debug:
-       msg: "{{ ec2_output }}"
+        msg: "{{ ec2_output }}"
