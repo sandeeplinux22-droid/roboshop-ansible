@@ -2,11 +2,10 @@
   hosts: local
   connection: local 
   vars:
-    instances: [ "mongodb", "redis", "mysql", "RabbitMQ" ]
+    instances: ["mongodb", "redis", "mysql", "RabbitMQ"]
     action: create
     domain_name: sandeeplinux22.store
     ami_id: ami-0055977a6e828a4f4
-    
   tasks:
     - name: create ec2 instances
       amazon.aws.ec2_instance:
@@ -17,11 +16,9 @@
         - roboshop-common
         - "roboshop-{{ item }}"
         region: us-east-1
-        
       loop: "{{ instances }}"
       when: action == "create"
       register: ec2_output
-
     - name: print ec2 creation output 
       debug:
         msg: "{{ ec2_output }}"
