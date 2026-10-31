@@ -6,7 +6,7 @@
     # ansible-playbook roboshop.yaml -e "action=delete"
     instances: ["mongodb", "redis", "mysql", "RabbitMQ"]
     action: create
-    domain_name: daws92s.store
+    domain_name: sandeeplinux22.store
     ami_id: ami-0055977a6e828a4f4
   tasks:
   - name: create ec2 instance
