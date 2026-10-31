@@ -1,1 +1,4 @@
 ANSIBLE_STDOUT_CALLBACK=yaml ansible-playbook roboshop.yaml -i inventory.ini
+
+sudo dnf install ansible -y
+pip install jmespath
