@@ -1,0 +1,15 @@
+- name: create ec2 instances and route 53
+  hosts: local
+  connection: local 
+  vars:
+    instances: ["mongodb", "redis"]
+    action: create
+    action: delete
+    domain_name: sandeeplinux22.store
+    ami_id: ami-0055977a6e828a4f4
+  tasks:
+    - name: create ec2 instances
+      amazon.aws.ec2_instance:
+        name: "roboshop-{{ item }}"
+        image_id: "{{ ami_id }}"
+      loop: "{{ instances }}"
