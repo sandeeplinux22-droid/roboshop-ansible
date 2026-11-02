@@ -12,8 +12,14 @@
       state: present
   - name: start and enable mongodb
     service:
-     name: mongodb
+     name: mongod
      state: started
      enable: yes
+
+  - name: copy mongod.conf  
+    replace:
+     path: /etc/mongod.conf
+     regexp: '127.0.0.1'
+     replace: '0.0.0.0'
 
     
