@@ -16,6 +16,12 @@
      state: started
      enabled: yes
 
+  - name: restart mongodb
+    service:
+     name: mongod
+     state: restart
+     enabled: yes
+
   - name: allow remote connections  
     replace:
      path: /etc/mongod.conf
