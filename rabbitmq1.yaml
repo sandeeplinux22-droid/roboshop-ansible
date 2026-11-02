@@ -13,15 +13,11 @@
       - erlang
       - rabbitmq-server
       state: present
-  - name: enable  the service
+  - name: start and enable rabbitmq server
     service:
-     name: rabbitmq-server
-     enabled: yes
-     state: present
-  - name: start the service
-    service:
-     name:  rabbitmq-server
-     enabled: yes
-     state: present
+      name: rabbitmq-server
+      state: started
+      enabled: yes
+
   - name: set the permission
     command: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
