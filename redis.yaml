@@ -1,8 +1,8 @@
-- name: configure mongodb
-  hosts: mongodb
+- name: configure redis
+  hosts: redis
   become: yes
   tasks:
-  - name: list mondule
+  - name: list module
     dnf:
      name: redis
      state: present
@@ -12,7 +12,7 @@
       state: present
   - name: disbale and enable the redis 
     dnf: 
-    name:redis:7
+    name:redis: 7 
     state: enabled
 
   - name: Enable and start Redis service
