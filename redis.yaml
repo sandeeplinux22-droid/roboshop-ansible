@@ -1,0 +1,47 @@
+- name: configure mongodb
+  hosts: mongodb
+  become: yes
+  tasks:
+  - name: list mondule
+    dnf:
+     name: redis
+     state: present
+  - name: install the packages 
+    package:
+      name:  redis 
+      state: present
+  - name: disbale and enable the redis 
+    dnf: 
+    name:redis:7
+    state: enabled
+
+  - name: Enable and start Redis service
+    ansible.builtin.systemd:
+     name: redis
+     state: started
+     enabled: true
+
+  - name: allow remote connections  
+    replace:
+     path: /etc/redis/redis.conf
+     regexp: '127.0.0.1 -::1'
+     replace: '0.0.0.0 -::1'
+
+  - name: allow protected 
+    replace:
+     path: /etc/redis/redis.conf
+     regexp:  '^protected-mode\s+'
+     line:  'protected-mode no'
+     state: present
+  
+  - name: start and enable redis
+    service:
+     name: redis
+     state: started
+     enabled: yes
+
+  - name: restart redis
+    service:
+     name: redis
+     state: restarted
+     enabled: yes
