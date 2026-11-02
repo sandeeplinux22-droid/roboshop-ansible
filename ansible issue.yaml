@@ -1,4 +1,7 @@
 ANSIBLE_STDOUT_CALLBACK=yaml ansible-playbook roboshop.yaml -i inventory.ini
 
-sudo dnf install ansible -y
+sudo dnf install ansible -y installing
+
 pip3.9 install jmespath
+
+ansible-playbook roboshop.yaml -i inventory.ini -e  "action=delete"
