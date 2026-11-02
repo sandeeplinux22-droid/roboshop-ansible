@@ -3,6 +3,6 @@
   become: yes
   tasks:
   - name: copy mongorepo
-    ansible.built.copy:
-     src: mongo.repo
-     destination: /etc/yum.repos.d/mongo.repo
+    copy:
+    src: mongo.repo
+    destination: /etc/yum.repos.d/mongo.repo
