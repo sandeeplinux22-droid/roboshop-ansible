@@ -2,15 +2,12 @@
   hosts: redis
   become: yes
   tasks:
-  - name: list module
-    dnf:
-     name: redis
-     state: present
+
   - name: install the packages 
     package:
       name:  redis 
       state: present
-  - name: disbale and enable the redis 
+  - name: disable and enable the redis 
     dnf: 
     name:redis: 7 
     state: enabled
