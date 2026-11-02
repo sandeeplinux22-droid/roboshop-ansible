@@ -1,6 +1,6 @@
 - name: create ec2 instances and r53 records
-  hosts: localhost
-  connection: localhost
+  hosts: local
+  connection: local
   vars:
     # ansible-playbook roboshop.yaml -e "instances=['mongodb', 'redis']"
     # ansible-playbook roboshop.yaml -e "action=delete"
