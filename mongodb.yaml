@@ -13,12 +13,12 @@
   - name: enable mongod
     service:
      name: mongod
-     state: started
+     state: present
      enable: yes
   - name: start mongod
     service:
      name: mongod
-     state: present
+     state: start
      enable: yes 
 
   - name: allow remote connections  
