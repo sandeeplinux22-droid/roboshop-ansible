@@ -1,6 +1,6 @@
 - name: configure RabbitMQ
-  hosts: RabbitMQ
-  connection: RabbitMQ
+  hosts: rabbitmq
+  connection: rabbitmq
   become: yes
   tasks:
   - name: copy the file
