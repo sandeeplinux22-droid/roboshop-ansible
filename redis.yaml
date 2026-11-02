@@ -11,12 +11,7 @@
     dnf: 
      name:redis: 7 
      state: enabled
-
-  - name: Enable and start Redis service
-    ansible.builtin.systemd:
-     name: redis
-     state: started
-     enabled: true
+     enabled: yes
 
   - name: allow remote connections  
     replace:
