@@ -9,8 +9,8 @@
       state: present
   - name: disable and enable the redis 
     dnf: 
-    name:redis: 7 
-    state: enabled
+     name:redis: 7 
+     state: enabled
 
   - name: Enable and start Redis service
     ansible.builtin.systemd:
