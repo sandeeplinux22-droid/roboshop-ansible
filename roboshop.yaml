@@ -4,6 +4,7 @@
   vars:
     # ansible-playbook roboshop.yaml -e "instances=['mongodb', 'redis']"
     # ansible-playbook roboshop.yaml -e "action=delete"
+    ansible_python_interpreter: /usr/bin/python3
     instances: ["mongodb", "redis", "mysql", "RabbitMQ"]
     action: create
     domain_name: sandeeplinux22.store
