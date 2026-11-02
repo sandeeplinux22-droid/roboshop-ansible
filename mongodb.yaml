@@ -4,5 +4,5 @@
   tasks:
   - name: copy mongorepo
     copy:
-    src: mongo.repo
-    destination: /etc/yum.repos.d/mongo.repo
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
