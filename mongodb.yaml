@@ -1,0 +1,5 @@
+- name: configure mongodb
+  hosts: mongodb
+  become: yes
+  tasks:
+  - name: 
