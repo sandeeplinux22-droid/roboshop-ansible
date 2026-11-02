@@ -1,0 +1,25 @@
+- name: configure RabbitMQ
+  hosts: RabbitMQ
+  connection: RabbitMQ
+  become: yes
+  tasks:
+  - name: copy the file
+    copy: 
+     src: rabbitmq.repo 
+     dest: /etc/yum.repos.d/rabbitmq.repo
+  - name: install the packages
+    packages:
+      name: rabbitmq-server
+      state: present
+  - name: enable  the service
+    service:
+     name: rabbitmq-server
+     enabled: yes
+     state: present
+  - name: start the service
+    service:
+     name:  rabbitmq-server
+     enabled: yes
+     state: present
+  - name: set the permission
+    command: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
