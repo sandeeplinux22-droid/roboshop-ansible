@@ -5,3 +5,6 @@ sudo dnf install ansible -y installing
 pip3.9 install jmespath
 
 ansible-playbook roboshop.yaml -i inventory.ini -e  "action=delete"
+
+
+ansible-galaxy collection install ansible.mysql
