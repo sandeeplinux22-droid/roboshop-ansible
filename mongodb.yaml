@@ -10,11 +10,16 @@
     package:
       name:  mongodb-org 
       state: present
-  - name: start and enable mongod
+  - name: enable mongod
     service:
      name: mongod
      state: started
      enable: yes
+  - name: start mongod
+    service:
+     name: mongod
+     state: present
+     enable: yes 
 
   - name: allow remote connections  
     replace:
