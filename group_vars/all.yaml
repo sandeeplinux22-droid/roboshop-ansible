@@ -1,5 +1,7 @@
 mysql_root_password: RoboShop@1
 
 roboshop: roboshop123
+
+
 mongodb_host: mongodb.sandeeplinux22.store
 redis_host: redis.sandeeplinux22.store
