@@ -1,7 +1,4 @@
-mysql_root_password: RoboShop@1
-
-roboshop: roboshop123
-
-
+ansible_user: ec2-user
+ansible_password: DevOps321
 mongodb_host: mongodb.sandeeplinux22.store
 redis_host: redis.sandeeplinux22.store
