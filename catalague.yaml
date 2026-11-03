@@ -34,15 +34,15 @@
    - name: install dependencies
      community.general.npm:
       path: /app 
-   - name: start and enable catalogue
+   - name: start and enable catalague
      service:
-      name: catalogue
+      name: catalague
       state: started
       enabled: yes
 
-   - name: restart catalogue
+   - name: restart catalague
      service:
-      name: catalogue
+      name: catalague
       state: restarted
       enabled: yes
 
