@@ -1,0 +1,45 @@
+- name: configure user
+  hosts: user
+  become: yes
+  tasks:
+   - name:  enable nodejs
+     command: dnf module enable nodejs:24 -y
+   - name: install nodejs
+     package:
+      name: nodejs
+      state: present
+   - name: create application user
+     user: 
+      name: roboshop
+      shell: /sbin/nologin
+      comment: "roboshop system user" 
+      
+   - name: create directory 
+     file: 
+       path : /app
+       state: directory 
+   - name: remove user.zip
+     file:
+      path: /tmp/user.zip
+      state: absent
+   - name: download user application
+     get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/user-v4.zip
+      dest: /tmp/user.zip
+   - name: unzip the file 
+     unarchive:
+       src: /tmp/user.zip
+       dest: /app
+       remote_src: yes
+   - name: install dependencies
+     community.general.npm:
+      path: /app 
+   - name: daemon reload
+     systemd_service:
+      daemon_reload: true
+
+   - name: start and enable user
+     service:
+      name: user
+      state: restarted
+      enabled: yes
