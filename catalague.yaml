@@ -18,4 +18,20 @@
      file: 
        path : /app
        state: directory 
+   - name: remove catalogue.zip
+     file:
+      path: /tmp/catalogue.zip
+      state: absent
+   - name: download catalogue application
+     get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
+      dest: /tmp/catalogue.zip
+   - name: unzip the file 
+     unarchive:
+       src: /app
+       dest: /tmp/catalogue.zip
+   - name: install dependencies
+     package: 
+       src: /app
+       dest: npm
 
