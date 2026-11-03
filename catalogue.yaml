@@ -1,5 +1,5 @@
 - name: configure nodejs
-  hosts: catalague
+  hosts: catalogue
   become: yes
   tasks:
    - name: enable the nodejs
