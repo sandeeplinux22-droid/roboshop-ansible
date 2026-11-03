@@ -13,4 +13,6 @@
       name: roboshop
       shell: /sbin/nologin
       comment: "roboshop system user" 
-      home: app
+      
+   - name: create directory 
+
