@@ -28,10 +28,10 @@
       dest: /tmp/catalogue.zip
    - name: unzip the file 
      unarchive:
-       src: /app
-       dest: /tmp/catalogue.zip
+       src: /tmp/catalogue.zip
+       dest: /app
+       remote_src: yes
    - name: install dependencies
-     package: 
-       src: /app
-       dest: npm
+     community.general.npm:
+      path: /app 
 
