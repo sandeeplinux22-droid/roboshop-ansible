@@ -1,0 +1,16 @@
+- name: configure nodejs
+  hosts: catalague
+  become: yes
+  tasks:
+   - name: enable the nodejs
+     command: dnf module enable nodejs:24 -y
+   - name: install nodejs
+     package:
+      name: nodejs
+      state: present
+   - name: create application user
+     user: 
+      name: roboshop
+      shell: /sbin/nologin
+      comment: "roboshop system user" 
+      home: app
