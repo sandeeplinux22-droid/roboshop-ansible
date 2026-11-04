@@ -1,0 +1,12 @@
+ANSIBLE_STDOUT_CALLBACK=yaml ansible-playbook roboshop.yaml -i inventory.ini
+
+sudo dnf install ansible -y installing
+
+pip3.9 install jmespath
+
+pip3.9 install botocore boto3
+
+ansible-playbook roboshop.yaml -i inventory.ini -e  "action=delete"
+
+
+ansible-galaxy collection install ansible.mysql
