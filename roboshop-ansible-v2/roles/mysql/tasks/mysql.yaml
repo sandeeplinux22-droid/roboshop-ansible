@@ -7,11 +7,8 @@
     state: present
 - name: enable and start mysql
   service:
-      name: mysqld
-      state: started
-      enabled: yes
-  
-
-
+    name: mysqld
+    state: started
+    enabled: yes
 - name: setup mysql root password
   command: mysql_secure_installation --set-root-pass "{{ mysql_root_password }}"
