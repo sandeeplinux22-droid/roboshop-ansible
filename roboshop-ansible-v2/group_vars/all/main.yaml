@@ -12,12 +12,12 @@ rabbitmq_password: "{{ vault_rabbitmq_password }}"
 # shipping_db_user: "{{ vault_shipping_db_user }}"
 # shipping_db_password: "{{ vault_shipping_db_password }}"
 
-# mongodb_host: mongodb.sandeeplinux22.store
-# redis_host: redis.sandeeplinux22.store
-# mysql_host: mysql.sandeeplinux22.store
-# rabbitmq_host: rabbitmq.sandeeplinux22.store
-# catalogue_host: catalogue.sandeeplinux22.store
-# user_host: user.sandeeplinux22.store
-# cart_host: cart.sandeeplinux22.store
-# shipping_host: shipping.sandeeplinux22.store
-# payment_host: payment.sandeeplinux22.store
+mongodb_host: mongodb.sandeeplinux22.store
+redis_host: redis.sandeeplinux22.store
+mysql_host: mysql.sandeeplinux22.store
+rabbitmq_host: rabbitmq.sandeeplinux22.store
+catalogue_host: catalogue.sandeeplinux22.store
+user_host: user.sandeeplinux22.store
+cart_host: cart.sandeeplinux22.store
+shipping_host: shipping.sandeeplinux22.store
+payment_host: payment.sandeeplinux22.store
