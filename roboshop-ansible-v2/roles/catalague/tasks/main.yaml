@@ -1,45 +1,69 @@
-- name: print variables
-  debug:
-    msg: "COURSE: {{ course }}, DURATION: {{ duration }}, TRAINER: {{ trainer }}"
+- name: enable the nodejs
+  command: dnf module enable nodejs:24 -y
+- name: install nodejs
+  package:
+      name: nodejs
+      state: present
+- name: create application user
+  user: 
+      name: roboshop
+      shell: /sbin/nologin
+      comment: "roboshop system user" 
+      
+- name: create directory 
+  file: 
+      path : /app
+       state: directory 
+- name: remove catalogue.zip
+  file:
+      path: /tmp/catalogue.zip
+      state: absent
+- name: download catalogue application
+  get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
+      dest: /tmp/catalogue.zip
+- name: unzip the file 
+  unarchive:
+       src: /tmp/catalogue.zip
+       dest: /app
+       remote_src: yes
+- name: install dependencies
+  community.general.npm:
+      path: /app 
 
-- name: application setup
-  include_role:
-    name: common
-    tasks_from: app-setup
-
-- name: nodejs setup
-  include_role:
-    name: common
-    tasks_from: nodejs
-
-- name: systemd setup
-  include_role:
-    name: common
-    tasks_from: systemd-setup
-
+- name: copy catalogue service
+  template:
+      src: catalogue.service.j2
+      dest: /etc/systemd/system/catalogue.service
 - name: copy mongo repo
   copy:
-    src: mongo.repo
-    dest: /etc/yum.repos.d/mongo.repo
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
 
 - name: install mongodb client
   dnf:
-    name: mongodb-mongosh
-    state: present
-
+      name: mongodb-mongosh
+      state: present
 - name: check products loaded or not
   command: mongosh --host "{{ mongodb_host }}" --quiet --eval 'db.getSiblingDB("catalogue").products.countDocuments()'
   register: product_count
 
 - name: print product_count
   debug:
-    msg: "{{ product_count }}"
+      msg: "{{ product_count }}"
 
 - name: load the products
   shell: mongosh --host "{{ mongodb_host }}" < /app/db/master-data.js
   when: product_count.stdout | int == 0
 
-- name: restart application
-  include_role:
-    name: common
-    tasks_from: restart
+- name: daemon reload
+  systemd_service:
+      daemon_reload: true
+- name: start and enable catalogue
+  service:
+      name: catalogue
+      state: restarted
+      enabled: yes
+
+
+   
